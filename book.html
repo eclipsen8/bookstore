@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Book</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="book"></div>
+
+  <script src="js/api.js"></script>
+  <script>
+    const id = new URLSearchParams(window.location.search).get('id');
+
+    apiRequest(`/books/${id}`).then(book => {
+      document.getElementById('book').innerHTML = `
+        <h1>${book.title}</h1>
+        <p>${book.author}</p>
+        <p>${book.description}</p>
+        <p>${book.price} ₸</p>
+      `;
+    });
+  </script>
+</body>
+</html>
